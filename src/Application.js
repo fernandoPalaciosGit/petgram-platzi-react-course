@@ -9,7 +9,9 @@ export default function Application () {
     <StrictMode>
       <ThemeProvider theme={brandLightTheme}>
         <GlobalStyles />
-        <ListOfCategories />
+        <main className="main">
+          <ListOfCategories />
+        </main>
       </ThemeProvider>
     </StrictMode>
   )

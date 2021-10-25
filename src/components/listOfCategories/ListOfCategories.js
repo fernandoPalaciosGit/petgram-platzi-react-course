@@ -2,7 +2,7 @@ import { Category } from '../category'
 import React from 'react'
 import { List, Item } from './styles'
 
-const testList = [...Array(5).keys()]
+const testList = [...Array(15).keys()]
 
 export const ListOfCategories = () => {
   return (
