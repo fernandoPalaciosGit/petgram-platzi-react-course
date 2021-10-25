@@ -1,7 +1,6 @@
-## curso-platzi-react-avanzado ⚛️
-
-**¡Sígueme en Youtube para más contenido de React y Javascript!** 👉 https://www.youtube.com/midudev
-
-**¡Sígueme en Twitch para streams sobre desarrollo web!** 👉 https://www.twitch.tv/midudev
-
-Repositorio con el código del [Curso Avanzado de React de Platzi](https://platzi.com/cursos/react-avanzado/)
+despliegue de la aplicacion con NOW
+- como necesitamos un Backend para servir desde la aplicacion los recursos REST que va a consumir el cliente de React,
+necesitamos un servidor web -> utilizaremos Vercel (antes Now)
+- intalamos la cli de vercel
+- creamos un archivo de config de vercel (now.js)
+- ejecutamos vercel
