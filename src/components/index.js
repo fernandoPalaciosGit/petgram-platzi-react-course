@@ -1,2 +1,3 @@
-export * from './category';
-export * from './dummy';
+export * from './category'
+export * from './category'
+export * from './listOfCategories'
