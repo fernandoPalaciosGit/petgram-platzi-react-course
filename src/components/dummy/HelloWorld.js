@@ -15,7 +15,7 @@ const Button = styled.button`
   `}
 `
 
-export default function HelloWorld () {
+export const HelloWorld = () => {
   const [hello, setHello] = useState(false)
 
   return (
