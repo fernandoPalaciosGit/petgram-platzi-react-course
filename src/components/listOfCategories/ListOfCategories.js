@@ -1,11 +1,14 @@
-import { Category } from '../category'
 import React from 'react'
 import { List, Item } from './styles'
-
-const testList = [...Array(15).keys()]
+import db from '../../../api/db.json'
+import { Category } from '../category/Category'
 
 export const ListOfCategories = () => {
   return (
-    <List>{testList.map((index) => <Item key={index}><Category /></Item>)}</List>
+    <List>{db.categories.map((category) =>
+      <Item key={category.id}>
+        <Category {...category}/>
+      </Item>
+    )}</List>
   )
 }

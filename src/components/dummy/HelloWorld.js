@@ -1,19 +1,5 @@
-import styled, { css } from 'styled-components'
 import React, { useState } from 'react'
-
-const Button = styled.button`
-  display: inline-block;
-  border-radius: 3px;
-  padding: 0.5rem 0;
-  margin: 0.5rem 1rem;
-  width: 11rem;
-  background: #8bc34a;
-  color: white;
-  border: 2px solid white;
-  ${({ accent }) => accent && css`
-    background-color: #f44336;
-  `}
-`
+import {Button} from 'styles'
 
 export const HelloWorld = () => {
   const [hello, setHello] = useState(false)
