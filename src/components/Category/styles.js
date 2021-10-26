@@ -1,4 +1,4 @@
-import styled, {} from 'styled-components'
+import styled from 'styled-components'
 
 const imageDim = '75px'
 
@@ -15,7 +15,7 @@ export const Image = styled.img`
   height: ${imageDim};
   border-radius: 100%;
   border: 1px solid #ddd;
-  box-shadow: 0px 10px 14px rgba(0, 0, 0, .2);
+  box-shadow: 0 10px 14px rgba(0, 0, 0, .2);
   overflow: hidden;
   object-fit: cover;
 `
