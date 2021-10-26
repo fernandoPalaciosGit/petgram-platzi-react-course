@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FadeIn } from '../design/animations/FadeIn'
 
 export const ImageWrapper = styled.div`
   background-image: ${({ src }) => `url(${src})`};
@@ -11,13 +12,14 @@ export const ImageWrapper = styled.div`
   height: 0;
   padding-top: 66.64%;
   cursor: pointer;
+  ${FadeIn({ time: '2.5s' })}
 `
 
 export const Likes = styled.div`
   margin-top: 10px;
   display: flex;
   align-items: center;
-  
+
   & svg {
     cursor: pointer;
     margin-right: 5px;
