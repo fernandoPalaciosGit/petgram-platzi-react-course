@@ -12,10 +12,10 @@ export const GlobalStyles = createGlobalStyle`
   body {
       font-family: ${({ theme }) => theme.rootFontFamily};
       color: ${({ theme }) => theme.rootColor};
-      background: ${({theme}) => theme.rootBackgroundColor};
+      background: ${({ theme }) => theme.rootBackgroundColor};
       height: 100vh;
       margin: 0 auto;
-      max-width: ${({theme}) => theme.rootMaxWidth};
+      max-width: ${({ theme }) => theme.rootMaxWidth};
       overscroll-behavior: none;
       width: 100%;
   }
@@ -25,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   .main {
-    box-shadow: ${({theme}) => theme.rootShadow};
+    box-shadow: ${({ theme }) => theme.rootShadow};
     padding-bottom: 10px;
     overflow-x: hidden;
     min-height: 100vh;

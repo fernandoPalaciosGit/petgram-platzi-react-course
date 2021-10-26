@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Button} from 'styles'
+import { Button } from 'styles'
 
 export const HelloWorld = () => {
   const [hello, setHello] = useState(false)
