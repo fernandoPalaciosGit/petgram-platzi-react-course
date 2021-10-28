@@ -1,9 +1,25 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+export const fixedList = css`
+max-width: 400px;
+overflow: hidden;
+  background: azure;
+  border-radius: 60px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  padding: 5px;
+  top: -20px;
+  transform: scale(0.5);
+  z-index: 1;
+`
 
 export const List = styled.ul`
   display: flex;
   flex-direction: row;
   overflow: scroll;
+  ${({ fixed }) => fixed && fixedList}
 `
 
 export const Item = styled.li`
