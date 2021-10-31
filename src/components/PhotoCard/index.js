@@ -7,7 +7,7 @@ const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1520561805070-83c413349
 
 export const PhotoCard = ({ categoryId, likes = 0, src = DEFAULT_IMAGE }) => {
   const card = useRef(null)
-  const [showCard] = useViewportVisible(card, '.ListOfPhotoCards')
+  const [showCard] = useViewportVisible(card, { root: '.ListOfPhotoCards' })
 
   return (
     <CardWrapper ref={card}>

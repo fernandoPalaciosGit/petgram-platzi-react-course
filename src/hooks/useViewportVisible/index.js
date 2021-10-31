@@ -1,24 +1,38 @@
 import { useState, useEffect } from 'react'
 import IsElement from 'lodash/isElement'
-import IsObject from 'lodash/isObject'
 
-export const useViewportVisible = (element, rootSelector) => {
+const updateShowOnVisibleRoot = (setShow, { root, element, rootMargin, threshold }) => {
+  const callback = (entries, observer) => {
+    const [{ isIntersecting }] = entries
+    if (isIntersecting) {
+      setShow(true)
+      observer.disconnect()
+    }
+  }
+  const observer = new window.IntersectionObserver(callback, {
+    // todo: {root} --> not work,
+    root: null,
+    rootMargin: rootMargin || '0px',
+    threshold: threshold || 0.1
+  })
+
+  if (IsElement(root)) {
+    observer.observe(element)
+  } else {
+    console.info('Could not find element root for observer')
+    setShow(true)
+  }
+}
+
+export const useViewportVisible = (element, options = { root: null }) => {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    const callback = ([{ isIntersecting }], observer) => {
-      if (isIntersecting) {
-        setShow(isIntersecting)
-        observer.disconnect()
-      }
-    }
-    const observer = new window.IntersectionObserver(callback, {
-      root: document.querySelector(rootSelector)
+    updateShowOnVisibleRoot(setShow, {
+      ...options,
+      root: document.querySelector(options.root),
+      element: element.current
     })
-
-    if (IsObject(element) && IsElement(element.current)) {
-      observer.observe(element.current)
-    }
   }, [element])
 
   return [show]
