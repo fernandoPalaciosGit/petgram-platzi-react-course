@@ -17,7 +17,9 @@ export const ImageWrapper = styled.div`
 
 export const Likes = styled.div`
   margin-top: 10px;
-  display: flex;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 5px;
   align-items: center;
 
   & svg {
