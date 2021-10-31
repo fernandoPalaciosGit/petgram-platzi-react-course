@@ -14,7 +14,7 @@ const PartialList = React.memo(({ categories = [], fixed = false }) => {
       )}
     </List>
   )
-});
+})
 
 const MultipleList = ({ categories, showHeaderList }) => {
   return (

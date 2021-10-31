@@ -13,7 +13,7 @@ export default function Application () {
       <Logo />
       <main className='main'>
         <ListOfCategories />
-        <ListOfPhotoCards />
+        <ListOfPhotoCards className='ListOfPhotoCards' />
       </main>
     </ThemeProvider>
   )
