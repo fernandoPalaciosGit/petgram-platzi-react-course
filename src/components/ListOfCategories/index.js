@@ -1,8 +1,8 @@
 import React from 'react'
 import { List, Item } from './styles'
-import db from '@Api/db.json'
 import { Category } from '../Category'
 import { useScrollVisible } from '@Hooks/useScrollVisible'
+import { useApiResource, API_RESOURCES } from '@Hooks/useApiResource'
 
 const PartialList = ({ categories = [], fixed = false }) => {
   return (
@@ -16,13 +16,24 @@ const PartialList = ({ categories = [], fixed = false }) => {
   )
 }
 
+const MultipleList = ({ categories, showHeaderList }) => {
+  return (
+    <>
+      {showHeaderList && <PartialList categories={categories} fixed />}
+      <PartialList categories={categories} />
+    </>
+  )
+}
+
 export const ListOfCategories = () => {
-  const [showCategories] = useScrollVisible(210)
+  const [showHeaderList] = useScrollVisible(210)
+  const [response] = useApiResource(API_RESOURCES.CATEGORIES, [])
 
   return (
     <>
-      <PartialList categories={db.categories} />
-      {showCategories && <PartialList categories={db.categories} fixed />}
+      {response.loading && <strong>Loading categories......</strong>}
+      {response.error && <strong>Error: ${response.error}</strong>}
+      {!response.loading && !response.error && <MultipleList categories={response.data} showHeaderList={showHeaderList} />}
     </>
   )
 }
