@@ -1,24 +1,14 @@
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { LocalStorageContext } from '../../providers/LocalStorage'
 
-const getItemKey = (key) => `useLikeIconStatus-${key}`
-
-export function getStateFromLocalStorage (key = '') {
-  return JSON.parse(
-    localStorage.getItem(getItemKey(key)) || JSON.stringify(false)
-  )
-}
-
-export function setStateToLocalStorage (key = '', value) {
-  localStorage.setItem(getItemKey(key), JSON.stringify(value))
-}
-
-export const useLikeIconStatus = (itemKey) => {
-  const [liked, setLiked] = useState(getStateFromLocalStorage(itemKey))
+export const useLikeIconStatus = (itemKey, initValue) => {
+  const { getStorage, setStorage } = useContext(LocalStorageContext)
+  const [liked, setLiked] = useState(getStorage(itemKey, initValue))
   const LikesIcon = liked ? MdFavorite : MdFavoriteBorder
   const setLikesIcon = () => setLiked(!liked)
 
-  useEffect(() => setStateToLocalStorage(itemKey, liked), [liked])
+  useEffect(() => setStorage(itemKey, liked), [liked])
 
   return [LikesIcon, setLikesIcon]
 }
