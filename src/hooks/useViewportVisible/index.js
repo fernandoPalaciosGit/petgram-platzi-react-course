@@ -9,7 +9,7 @@ const updateShowOnVisibleRoot = (setShow, { root, element, rootMargin, threshold
       observer.disconnect()
     }
   }
-  const observer = new window.IntersectionObserver(callback, {
+  const observer = new IntersectionObserver(callback, {
     // todo: {root} --> not work,
     root: null,
     rootMargin: rootMargin || '0px',
@@ -28,11 +28,14 @@ export const useViewportVisible = (element, options = { root: null }) => {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    updateShowOnVisibleRoot(setShow, {
-      ...options,
-      root: document.querySelector(options.root),
-      element: element.current
-    })
+    import('intersection-observer')
+      .then(() => {
+        updateShowOnVisibleRoot(setShow, {
+          ...options,
+          root: document.querySelector(options.root),
+          element: element.current
+        })
+      })
   }, [element])
 
   return [show]
