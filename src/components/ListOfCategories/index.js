@@ -1,7 +1,8 @@
 import React from 'react'
 import { List, Item } from './styles'
-import db from '../../../api/db.json'
+import db from '@Api/db.json'
 import { Category } from '../Category'
+import { useScrollVisible } from '@Hooks/useScrollVisible'
 
 const PartialList = ({ categories = [], fixed = false }) => {
   return (
@@ -16,10 +17,12 @@ const PartialList = ({ categories = [], fixed = false }) => {
 }
 
 export const ListOfCategories = () => {
+  const [showCategories] = useScrollVisible(210)
+
   return (
     <>
       <PartialList categories={db.categories} />
-      <PartialList categories={db.categories} fixed />
+      {showCategories && <PartialList categories={db.categories} fixed />}
     </>
   )
 }

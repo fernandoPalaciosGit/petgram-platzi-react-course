@@ -1,10 +1,10 @@
 import React, { StrictMode } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyles } from './components/design/GlobalStyles'
-import { brandLightTheme } from './components/design/theme'
-import { ListOfCategories } from './components/ListOfCategories'
-import { ListOfPhotoCards } from './components/ListOfPhotoCards'
-import { Logo } from './components/Logo'
+import { GlobalStyles } from '@Components/design/GlobalStyles'
+import { Logo } from '@Components/Logo'
+import { ListOfCategories } from '@Components/ListOfCategories'
+import { ListOfPhotoCards } from '@Components/ListOfPhotoCards'
+import { brandLightTheme } from '@Components/design/theme'
 
 export default function Application () {
   return (

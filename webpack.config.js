@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -10,6 +11,7 @@ module.exports = {
       template: './src/index.html'
     })
   ],
+  devtool: 'inline-source-map',
   module: {
     rules: [{
       test: /\.js$/,
@@ -21,5 +23,12 @@ module.exports = {
         }
       }
     }]
+  },
+  resolve: {
+    alias: {
+      '@Components': path.resolve(__dirname, 'src/components/'),
+      '@Hooks': path.resolve(__dirname, 'src/hooks/'),
+      '@Api': path.resolve(__dirname, 'api/')
+    }
   }
 }

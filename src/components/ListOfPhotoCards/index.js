@@ -1,4 +1,4 @@
-import db from '../../../api/db.json'
+import db from '@Api/db.json'
 import { PhotoCard } from '../PhotoCard'
 import React from 'react'
 
