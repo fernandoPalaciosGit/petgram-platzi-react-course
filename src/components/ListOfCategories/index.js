@@ -4,7 +4,7 @@ import { Category } from '../Category'
 import { useScrollVisible } from '@Hooks/useScrollVisible'
 import { useApiResource, API_RESOURCES } from '@Hooks/useApiResource'
 
-const PartialList = ({ categories = [], fixed = false }) => {
+const PartialList = React.memo(({ categories = [], fixed = false }) => {
   return (
     <List fixed={fixed}>
       {categories.map((category) =>
@@ -14,7 +14,7 @@ const PartialList = ({ categories = [], fixed = false }) => {
       )}
     </List>
   )
-}
+});
 
 const MultipleList = ({ categories, showHeaderList }) => {
   return (
