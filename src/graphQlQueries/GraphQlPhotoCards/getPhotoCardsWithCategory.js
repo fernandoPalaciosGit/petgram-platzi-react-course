@@ -13,8 +13,10 @@ const QUERY_PHOTOS_BY_CATEGORY = gql`
 }
 `
 
+const getPayload = (categoryId) => ({ variables: { categoryId } })
+
 export const getPhotoCardsWithCategory = (categoryId) => {
   return !categoryId
     ? { error: 'category ID not defined', loading: false }
-    : useQuery(QUERY_PHOTOS_BY_CATEGORY, { variables: { categoryId } })
+    : useQuery(QUERY_PHOTOS_BY_CATEGORY, getPayload(categoryId))
 }

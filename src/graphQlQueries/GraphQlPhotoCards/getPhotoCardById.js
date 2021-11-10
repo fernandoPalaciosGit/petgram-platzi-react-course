@@ -13,8 +13,10 @@ query get_photo_by_id ($id: ID!) {
 }
 `
 
+const getPayload = (id) => ({ variables: { id } })
+
 export const getPhotoCardById = (id) => {
   return !id
     ? { error: 'Photo ID not defined', loading: false }
-    : useQuery(QUERY_PHOTO_BY_ID, { variables: { id } })
+    : useQuery(QUERY_PHOTO_BY_ID, getPayload(id))
 }

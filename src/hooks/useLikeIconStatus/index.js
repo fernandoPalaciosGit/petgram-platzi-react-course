@@ -10,5 +10,5 @@ export const useLikeIconStatus = (itemKey, initValue) => {
 
   useEffect(() => setStorage(itemKey, liked), [liked])
 
-  return [LikesIcon, setLikesIcon]
+  return [LikesIcon, setLikesIcon, liked]
 }
