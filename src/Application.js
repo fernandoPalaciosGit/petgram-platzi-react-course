@@ -1,22 +1,12 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ListOfCategories } from '@Components/ListOfCategories'
-import { ListOfPhotoCards } from '@Components/ListOfPhotoCards'
 import { brandLightTheme } from '@Components/design/theme'
 import { LocalStorageProvider } from '@Providers/LocalStorage'
 import GraphQlProvider from '@Providers/GraphQlProvider'
-import { PetDetails } from '@Components/PetDetails'
 import { Router } from '@reach/router'
 import { Header } from '@Components/Header'
-
-const PetCategory = ({ categoryId }) => {
-  return (
-    <>
-      <ListOfCategories />
-      <ListOfPhotoCards categoryId={categoryId} />
-    </>
-  )
-}
+import { HomePage } from '@Pages/HomePage'
+import { PetDetailsPage } from '@Pages/PetDetailsPage'
 
 export default function Application () {
   return (
@@ -26,12 +16,9 @@ export default function Application () {
         <main className='main'>
           <GraphQlProvider>
             <Router>
-              <PetCategory
-                path='/'
-                categoryId={1}
-              />
-              <PetCategory path='/pet-category/:categoryId' />
-              <PetDetails path='/pet-details/:petId' />
+              <HomePage path='/' />
+              <HomePage path='/pet-category/:categoryId' />
+              <PetDetailsPage path='/pet-details/:petId' />
             </Router>
           </GraphQlProvider>
         </main>

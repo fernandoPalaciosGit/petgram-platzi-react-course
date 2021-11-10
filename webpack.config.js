@@ -35,7 +35,8 @@ module.exports = {
       '@Hooks': path.resolve(__dirname, 'src/hooks/'),
       '@Providers': path.resolve(__dirname, 'src/providers/'),
       '@Api': path.resolve(__dirname, 'api/'),
-      '@GraphQl': path.resolve(__dirname, 'src/graphQlQueries')
+      '@GraphQl': path.resolve(__dirname, 'src/graphQlQueries'),
+      '@Pages': path.resolve(__dirname, 'src/pages')
     }
   }
 }
