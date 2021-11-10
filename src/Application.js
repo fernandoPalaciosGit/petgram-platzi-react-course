@@ -17,7 +17,7 @@ export default function Application () {
         <main className='main'>
           <GraphQlProvider>
             <ListOfCategories />
-            <ListOfPhotoCards />
+            <ListOfPhotoCards categoryId={3} />
           </GraphQlProvider>
         </main>
       </LocalStorageProvider>
