@@ -1,3 +1,4 @@
+import React from 'react'
 import { getPhotoCardById } from '@GraphQl/GraphQlPhotoCards/getPhotoCardById'
 import { PhotoCard } from '@Components/PhotoCard'
 

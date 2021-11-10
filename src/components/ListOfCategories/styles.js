@@ -3,7 +3,6 @@ import { FadeIn } from '@Components/design/animations/FadeIn'
 
 export const fixedList = css`
   max-width: 400px;
-  overflow: hidden;
   background: azure;
   border-radius: 60px;
   position: fixed;
@@ -17,11 +16,28 @@ export const fixedList = css`
   ${FadeIn()}
 `
 
+export const scrollBar = css`
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 5px;
+    ${({ fixed }) => fixed && css`
+      width: 100px;
+    `}
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, .5);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
+`
+
 export const List = styled.ul`
+  padding: 0;
   display: flex;
   flex-direction: row;
-  overflow: scroll;
   ${({ fixed }) => fixed && fixedList}
+  ${scrollBar}
 `
 
 export const Item = styled.li`
