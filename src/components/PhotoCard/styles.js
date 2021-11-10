@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { FadeIn } from '../design/animations/FadeIn'
+import { Link } from '@reach/router'
 
-export const ImageWrapper = styled.a`
+export const ImageWrapper = styled(Link)`
   background-image: ${({ src }) => `url(${src})`};
   background-repeat: no-repeat;
   background-size: cover;

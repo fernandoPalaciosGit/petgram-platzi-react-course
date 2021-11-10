@@ -9,7 +9,7 @@ import { PetDetails } from '@Components/PetDetails'
 import { Router } from '@reach/router'
 import { Header } from '@Components/Header'
 
-const Body = ({ categoryId }) => {
+const PetCategory = ({ categoryId }) => {
   return (
     <>
       <ListOfCategories />
@@ -26,12 +26,12 @@ export default function Application () {
         <main className='main'>
           <GraphQlProvider>
             <Router>
-              <PetDetails path='/pet-details/:id' />
-              <Body path='/pet-category/:categoryId' />
-              <Body
+              <PetCategory
                 path='/'
                 categoryId={1}
               />
+              <PetCategory path='/pet-category/:categoryId' />
+              <PetDetails path='/pet-details/:petId' />
             </Router>
           </GraphQlProvider>
         </main>

@@ -20,7 +20,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     <CardWrapper ref={card}>
       {showCard &&
         <>
-          <ImageWrapper href={`/pet-details/${id}`} src={src} />
+          <ImageWrapper to={`/pet-details/${id}`} src={src} />
           <Likes>
             <LikesIcon size='32px' onClick={updateLikes} />
             <span>{likes} likes!</span>

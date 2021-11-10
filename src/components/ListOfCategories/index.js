@@ -27,6 +27,7 @@ const MultipleList = ({ categories, showHeaderList }) => {
 
 export const ListOfCategories = () => {
   const [showHeaderList] = useScrollVisible(210)
+  // also could use graphQl server: query categories {}
   const [{ loading, error, data }] = useApiResource(API_RESOURCES.CATEGORIES, [])
 
   if (loading) return <div>...loading categories</div>
