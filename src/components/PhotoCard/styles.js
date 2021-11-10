@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { FadeIn } from '../design/animations/FadeIn'
 
-export const ImageWrapper = styled.div`
+export const ImageWrapper = styled.a`
   background-image: ${({ src }) => `url(${src})`};
   background-repeat: no-repeat;
   background-size: cover;

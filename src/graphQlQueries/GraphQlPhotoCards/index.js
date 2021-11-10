@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client'
 
-const QUERY = gql`
+const QUERY_ALL_PHOTOS = gql`
 query getPhotos {
   photos {
     id
@@ -12,7 +12,7 @@ query getPhotos {
   }
 }`
 
-const QUERY_CATEGORY = gql`
+const QUERY_PHOTOS_CATEGORY = gql`
  query get_photos ($categoryId: ID){
   photos(categoryId: $categoryId) {
     id
@@ -25,12 +25,29 @@ const QUERY_CATEGORY = gql`
 }
 `
 
+const QUERY_PHOTO_ID = gql`
+query get_photo ($id: ID!) {
+  photo (id: $id) {
+    id,
+    categoryId,
+    src,
+    likes,
+    liked,
+    userId
+  }
+}
+`
+
 export const getPhotoCards = () => {
-  return useQuery(QUERY)
+  return useQuery(QUERY_ALL_PHOTOS)
 }
 
 export const getPhotoCardsWithCategory = (categoryId) => {
   return !categoryId
     ? { error: 'category ID not defined', loading: false }
-    : useQuery(QUERY_CATEGORY, { variables: { categoryId } })
+    : useQuery(QUERY_PHOTOS_CATEGORY, { variables: { categoryId } })
+}
+
+export const getPhotoCardById = (id) => {
+  return useQuery(QUERY_PHOTO_ID, { variables: { id } })
 }
