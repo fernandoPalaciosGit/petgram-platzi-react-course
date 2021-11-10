@@ -6,6 +6,7 @@ import { ListOfCategories } from '@Components/ListOfCategories'
 import { ListOfPhotoCards } from '@Components/ListOfPhotoCards'
 import { brandLightTheme } from '@Components/design/theme'
 import { LocalStorageProvider } from '@Providers/LocalStorage'
+import GraphQlProvider from '@Providers/GraphQlProvider'
 
 export default function Application () {
   return (
@@ -14,8 +15,10 @@ export default function Application () {
         <GlobalStyles />
         <Logo />
         <main className='main'>
-          <ListOfCategories />
-          <ListOfPhotoCards />
+          <GraphQlProvider>
+            <ListOfCategories />
+            <ListOfPhotoCards />
+          </GraphQlProvider>
         </main>
       </LocalStorageProvider>
     </ThemeProvider>
