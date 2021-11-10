@@ -10,22 +10,34 @@ import GraphQlProvider from '@Providers/GraphQlProvider'
 import { useQueryParam } from '@Hooks/useQueryParam'
 import { PhotoCardId } from '@Components/PhotoCard'
 
+const Header = () => {
+  return (
+    <>
+      <GlobalStyles />
+      <Logo />
+    </>
+  )
+}
+const Body = () => {
+  return (
+    <>
+      <ListOfCategories />
+      <ListOfPhotoCards categoryId={3} />
+    </>
+  )
+}
+
 export default function Application () {
   const { param } = useQueryParam('photo-card')
 
   return (
     <ThemeProvider theme={brandLightTheme}>
       <LocalStorageProvider>
-        <GlobalStyles />
-        <Logo />
+        <Header />
         <main className='main'>
           <GraphQlProvider>
-            {param
-              ? <PhotoCardId id={param} />
-              : <>
-                <ListOfCategories />
-                <ListOfPhotoCards categoryId={3} />
-              </>}
+            {param && <PhotoCardId id={param} />}
+            {!param && <Body />}
           </GraphQlProvider>
         </main>
       </LocalStorageProvider>

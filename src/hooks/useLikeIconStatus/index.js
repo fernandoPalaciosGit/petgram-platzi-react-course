@@ -1,6 +1,6 @@
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { useEffect, useState, useContext } from 'react'
-import { LocalStorageContext } from '../../providers/LocalStorage'
+import { LocalStorageContext } from '@Providers/LocalStorage'
 
 export const useLikeIconStatus = (itemKey, initValue) => {
   const { getStorage, setStorage } = useContext(LocalStorageContext)

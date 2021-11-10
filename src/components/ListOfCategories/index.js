@@ -27,13 +27,10 @@ const MultipleList = ({ categories, showHeaderList }) => {
 
 export const ListOfCategories = () => {
   const [showHeaderList] = useScrollVisible(210)
-  const [response] = useApiResource(API_RESOURCES.CATEGORIES, [])
+  const [{ loading, error, data }] = useApiResource(API_RESOURCES.CATEGORIES, [])
 
-  return (
-    <>
-      {response.loading && <strong>Loading categories......</strong>}
-      {response.error && <strong>Error: ${response.error}</strong>}
-      {!response.loading && !response.error && <MultipleList categories={response.data} showHeaderList={showHeaderList} />}
-    </>
-  )
+  if (loading) return <div>...loading categories</div>
+  if (error) return <div>Error categories: ${error}</div>
+
+  return <MultipleList categories={data} showHeaderList={showHeaderList} />
 }
