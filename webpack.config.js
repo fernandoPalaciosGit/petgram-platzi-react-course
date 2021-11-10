@@ -3,8 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
+  devServer: {
+    historyApiFallback: true// evita que todas las paginas hagan redirecciones: SPA
+  },
   output: {
-    filename: 'app.bundle.js'
+    filename: 'app.bundle.js',
+    publicPath: '/' // al navegar a cualquier rutos, obliga a buscar el bundle en la ruta que se especifica "/"
   },
   plugins: [
     new HtmlWebpackPlugin({

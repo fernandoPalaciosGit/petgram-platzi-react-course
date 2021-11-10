@@ -9,7 +9,7 @@ const PartialList = React.memo(({ categories = [], fixed = false }) => {
     <List fixed={fixed}>
       {categories.map((category) =>
         <Item key={category.id}>
-          <Category {...category} />
+          <Category {...category} path={`/pet-category/${category.id}`} />
         </Item>
       )}
     </List>

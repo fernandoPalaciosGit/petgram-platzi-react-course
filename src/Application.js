@@ -1,43 +1,38 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyles } from '@Components/design/GlobalStyles'
-import { Logo } from '@Components/Logo'
 import { ListOfCategories } from '@Components/ListOfCategories'
 import { ListOfPhotoCards } from '@Components/ListOfPhotoCards'
 import { brandLightTheme } from '@Components/design/theme'
 import { LocalStorageProvider } from '@Providers/LocalStorage'
 import GraphQlProvider from '@Providers/GraphQlProvider'
-import { useQueryParam } from '@Hooks/useQueryParam'
-import { PhotoCardId } from '@Components/PhotoCard'
+import { PetDetails } from '@Components/PetDetails'
+import { Router } from '@reach/router'
+import { Header } from '@Components/Header'
 
-const Header = () => {
-  return (
-    <>
-      <GlobalStyles />
-      <Logo />
-    </>
-  )
-}
-const Body = () => {
+const Body = ({ categoryId }) => {
   return (
     <>
       <ListOfCategories />
-      <ListOfPhotoCards categoryId={3} />
+      <ListOfPhotoCards categoryId={categoryId} />
     </>
   )
 }
 
 export default function Application () {
-  const { param } = useQueryParam('photo-card')
-
   return (
     <ThemeProvider theme={brandLightTheme}>
       <LocalStorageProvider>
         <Header />
         <main className='main'>
           <GraphQlProvider>
-            {param && <PhotoCardId id={param} />}
-            {!param && <Body />}
+            <Router>
+              <PetDetails path='/pet-details/:id' />
+              <Body path='/pet-category/:categoryId' />
+              <Body
+                path='/'
+                categoryId={1}
+              />
+            </Router>
           </GraphQlProvider>
         </main>
       </LocalStorageProvider>
