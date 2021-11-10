@@ -30,7 +30,8 @@ module.exports = {
       '@Components': path.resolve(__dirname, 'src/components/'),
       '@Hooks': path.resolve(__dirname, 'src/hooks/'),
       '@Providers': path.resolve(__dirname, 'src/providers/'),
-      '@Api': path.resolve(__dirname, 'api/')
+      '@Api': path.resolve(__dirname, 'api/'),
+      '@GraphQl': path.resolve(__dirname, 'src/graphQlQueries')
     }
   }
 }

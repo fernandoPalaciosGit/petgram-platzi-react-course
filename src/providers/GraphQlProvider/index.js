@@ -1,11 +1,17 @@
 import React from 'react'
-import { ApolloProvider } from 'react-apollo'
-import ApolloClient from 'apollo-boost'
+import { HttpLink } from 'apollo-link-http'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+
+const cache = new InMemoryCache()
+const link = new HttpLink({
+  uri: 'http://localhost:3500/graphql'
+})
+const client = new ApolloClient({
+  cache,
+  link
+})
 
 export default function GraphQlProvider ({ children }) {
-  const client = new ApolloClient({
-    url: 'http://localhost:3500/graphql'
-  })
   return (
     <ApolloProvider client={client}>
       {children}
