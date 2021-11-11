@@ -9,6 +9,7 @@ const LoginPage = lazy(() => import('@Pages/LoginPage'))
 const UserPage = lazy(() => import('@Pages/UserPage'))
 const PetDetailsPage = lazy(() => import('@Pages/PetDetailsPage'))
 const HomePage = lazy(() => import('@Pages/HomePage'))
+const RegisterPage = lazy(() => import('@Pages/RegisterPage'))
 
 const PublicRoutes = () => {
   return (
@@ -16,6 +17,7 @@ const PublicRoutes = () => {
       <HomePage path='/' />
       <HomePage path='/pet-category/:categoryId' />
       <PetDetailsPage path='/pet-details/:petId' />
+      <RegisterPage path='/register' />
     </Router>
   )
 }
