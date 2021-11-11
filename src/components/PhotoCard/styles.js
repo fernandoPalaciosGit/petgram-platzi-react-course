@@ -29,7 +29,6 @@ export const Likes = styled.div`
   }
 `
 export const CardWrapper = styled.article`
-  min-height: 400px; // need for catch Intersection observer in viewport 
-  padding: 0 10px;
-  margin: 0 auto;
+  min-height: 200px; // need for catch Intersection observer in viewport
+  margin-bottom: 25px;
 `

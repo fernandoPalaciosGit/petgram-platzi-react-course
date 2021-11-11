@@ -23,11 +23,4 @@ export const GlobalStyles = createGlobalStyle`
   ul {
     list-style: none;
   }
-  
-  .main {
-    box-shadow: ${({ theme }) => theme.rootShadow};
-    padding-bottom: 10px;
-    overflow-x: hidden;
-    min-height: 100vh;
-  }
 `
