@@ -7,7 +7,7 @@ export const HomePage = ({ categoryId }) => {
     <>
       <ListOfCategories />
       {categoryId && <ListOfPhotoCards categoryId={categoryId} />}
-      {!categoryId && <div>The Animal kingdom</div>}
+      {!categoryId && <div>Landing page: The Animal kingdom</div>}
     </>
   )
 }
