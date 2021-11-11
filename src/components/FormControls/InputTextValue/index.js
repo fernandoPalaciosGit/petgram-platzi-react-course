@@ -1,17 +1,30 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { InputControl } from '@Components/FormControls/InputTextValue/styles'
 
-const useInputValue = (initValue) => {
-  const [value, setValue] = useState(initValue)
-
-  return { value, onChange: ({ currentTarget }) => setValue(currentTarget.value) }
+export const VALIDATION_CONTROLS = {
+  user: '^([a-z0-9]{10,})$',
+  password: '^([a-z0-9]{5,})$'
 }
 
-export const InputTextValue = ({ id, initValue = '', ...rest }) => {
-  const control = useInputValue(initValue)
+const useInputValue = (initValue, validationRegex) => {
+  const [value, setValue] = useState(initValue)
+  const [hasError, setHasError] = useState(false)
+  const regEx = useRef(new RegExp(validationRegex))
+  const onChange = ({ currentTarget }) => {
+    setValue(currentTarget.value)
+    setHasError(regEx.current.test(currentTarget.value))
+  }
+
+  return { value, onChange, hasError }
+}
+
+export const InputTextValue = ({ id, initValue = '', validationRegex = '', ...rest }) => {
+  const { value, onChange, hasError } = useInputValue(initValue, validationRegex)
 
   return (
     <label htmlFor={id}>
-      <input id={id} {...control} {...rest} />
+      <InputControl data-error-validation={hasError} id={id} value={value} onChange={onChange} {...rest} />
+      {hasError && <small>error</small>}
     </label>
   )
 }

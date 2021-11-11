@@ -4,7 +4,7 @@ export const UserLoggedContext = createContext({})
 
 export const UserLoggedProvider = ({ children }) => {
   const [isLogged, setLogging] = useState(false)
-  const activateUser = () => setLogging(true)
+  const activateUser = () => setLogging(true) // graphQl mutation Login
 
   return (
     <UserLoggedContext.Provider value={{ isLogged, activateUser }}>
