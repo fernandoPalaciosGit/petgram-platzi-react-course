@@ -1,5 +1,5 @@
 import { fontFamily, fontSize } from './typography'
-import { neutral } from './colors'
+import { neutral, red } from './colors'
 import { spaces } from '@Components/design/spaces'
 
 export const globalStyles = {
@@ -14,7 +14,11 @@ export const body = {
 }
 
 export const navBar = {
-  navBarPaddingX: spaces.m
+  navBarPaddingX: spaces.m,
+  navBarLinkSize: spaces.xl,
+  navBarLinkColor: neutral['400'],
+  navBarLinkColorActive: red['100'],
+  navBarPointerSize: fontSize.cursor
 }
 
 export const brandLightTheme = {

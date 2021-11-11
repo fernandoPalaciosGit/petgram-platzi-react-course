@@ -3,6 +3,7 @@ export const fontFamily = {
 }
 
 export const fontSize = {
+  cursor: '50px',
   root: '16px',
   header1: '1.8rem',
   header2: '1.6rem',

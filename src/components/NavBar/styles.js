@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link } from '@reach/router'
+import { FadeIn } from '@Components/design/animations/FadeIn'
 
 export const NavBarButtons = styled.nav`
   position: fixed;
@@ -17,8 +18,25 @@ export const NavBarButtons = styled.nav`
 `
 
 export const NavBarLink = styled(Link)`
-  color: #e91e63;
   height: 100%;
   padding: 10px;
   text-decoration: none;
+  color: ${({ theme }) => theme.navBarLinkColor};
+  
+  &[aria-current] { // reach router implementation
+    position: relative;
+    color: ${({ theme }) => theme.navBarLinkColorActive};
+    
+    &::after {
+      content: '.';
+      position: absolute;
+      bottom: -5px;
+      font-size: ${({ theme }) => theme.navBarPointerSize};
+      left: 50%;
+      width: 0;
+      transform: translateX(-5.5px);
+      ${FadeIn({ time: '1.5s' })}
+    }
+  }
+  
 `
