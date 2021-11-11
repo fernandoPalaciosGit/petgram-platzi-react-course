@@ -1,7 +1,10 @@
 import React, { useContext } from 'react'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/InputTextValue'
+import { Container } from '@Components/styles_framework/Container'
+import { Text } from '@Components/styles_framework/Text'
 import { Link } from '@reach/router'
+import { Button } from '@Components/styles_framework/Button'
 
 const LoginPage = () => {
   const { activateUser } = useContext(UserLoggedContext)
@@ -11,8 +14,8 @@ const LoginPage = () => {
   }
 
   return (
-    <>
-      <div>Try to log in to access restricted Area</div>
+    <Container variant='fluid'>
+      <Text variant='subTitle'>Try to log in to access restricted Area</Text>
       <form onSubmit={submitLoginUser}>
         <InputTextValue
           id='login-user-control'
@@ -29,8 +32,13 @@ const LoginPage = () => {
         />
         <button type='submit'>Sign In</button>
       </form>
-      <div>Do not have account? <Link to='/register'>Register!</Link></div>
-    </>
+      <div>
+        <span>Do not have account? </span>
+        <Link to='/register'>
+          <Button variannt='secondary'>Register!</Button>
+        </Link>
+      </div>
+    </Container>
   )
 }
 

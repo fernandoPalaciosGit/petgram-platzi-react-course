@@ -1,5 +1,8 @@
 import React from 'react'
 import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/InputTextValue'
+import { Container } from '@Components/styles_framework/Container'
+import { Text } from '@Components/styles_framework/Text'
+import { Button } from '@Components/styles_framework/Button'
 
 const RegisterPage = () => {
   const submitRegisterUser = () => {
@@ -9,8 +12,9 @@ const RegisterPage = () => {
   }
 
   return (
-    <div>
-      <div>Register as new User</div>
+    <Container variant='fluid'>
+      <Text variant='title'>Register as new User</Text>
+
       <form onSubmit={submitRegisterUser}>
         <InputTextValue
           id='register-user-control'
@@ -32,9 +36,9 @@ const RegisterPage = () => {
           placeholder='retry same password'
           autoComplete='off'
         />
-        <button type='submit'>Register</button>
+        <Button variant='primary' type='submit'>Register</Button>
       </form>
-    </div>
+    </Container>
   )
 }
 
