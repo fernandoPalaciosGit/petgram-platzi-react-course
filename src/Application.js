@@ -5,16 +5,19 @@ import { LocalStorageProvider } from '@Providers/LocalStorage'
 import GraphQlProvider from '@Providers/GraphQlProvider'
 import { Header } from '@Components/Header'
 import { Body } from '@Components/Body'
+import { UserLoggedProvider } from '@Providers/UserLoggedProvider'
 
 export default function Application () {
   return (
-    <ThemeProvider theme={brandLightTheme}>
+    <UserLoggedProvider>
       <LocalStorageProvider>
         <GraphQlProvider>
-          <Header />
-          <Body />
+          <ThemeProvider theme={brandLightTheme}>
+            <Header/>
+            <Body/>
+          </ThemeProvider>
         </GraphQlProvider>
       </LocalStorageProvider>
-    </ThemeProvider>
+    </UserLoggedProvider>
   )
 }

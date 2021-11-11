@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { HomePage } from '@Pages/HomePage'
 import { PetDetailsPage } from '@Pages/PetDetailsPage'
 import { Router } from '@reach/router'
 import { WrapperBody } from '@Components/Body/styles'
-import { useUserLogger } from '@Hooks/useUserLogger'
 import { FavouritesPage } from '@Pages/FavouritesPage'
 import { UserPage } from '@Pages/UserPage'
 import { LoginPage } from '@Pages/LoginPage'
+import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 
 const PublicRoutes = () => {
   return (
@@ -37,7 +37,7 @@ const LoginRoutes = () => {
 }
 
 export const Body = () => {
-  const [isLogged] = useUserLogger()
+  const {isLogged} = useContext(UserLoggedContext)
 
   return (
     <WrapperBody>
