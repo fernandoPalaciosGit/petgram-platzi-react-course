@@ -3,7 +3,7 @@ import { getPhotoCardById } from '@GraphQl/GraphQlPhotoCards/getPhotoCardById'
 import { PhotoCard } from '@Components/PhotoCard'
 import { WrapperDetailsPage } from '@Pages/PetDetailsPage/styles'
 
-export const PetDetailsPage = ({ petId }) => {
+const PetDetailsPage = ({ petId }) => {
   const { loading, error, data } = getPhotoCardById(petId)
   const hasPhoto = data?.photo?.id
   if (loading) return <div>...loading photo</div>
@@ -16,3 +16,5 @@ export const PetDetailsPage = ({ petId }) => {
     </WrapperDetailsPage>
   )
 }
+
+export default PetDetailsPage

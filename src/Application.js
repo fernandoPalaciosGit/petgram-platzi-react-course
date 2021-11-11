@@ -13,8 +13,8 @@ export default function Application () {
       <LocalStorageProvider>
         <GraphQlProvider>
           <ThemeProvider theme={brandLightTheme}>
-            <Header/>
-            <Body/>
+            <Header />
+            <Body />
           </ThemeProvider>
         </GraphQlProvider>
       </LocalStorageProvider>
