@@ -18,13 +18,13 @@ const useInputValue = (initValue, validationRegex) => {
   return { value, onChange, hasError }
 }
 
-export const InputTextValue = ({ control = {}, id, initValue = '', validationRegex = '', ...rest }) => {
+export const InputTextValue = ({ control = {}, id, initValue = '', validationRegex = '', disabled = false, ...rest }) => {
   const { value, onChange, hasError } = useInputValue(initValue, validationRegex)
   control.getValue = () => value
 
   return (
     <label htmlFor={id}>
-      <InputControl data-error-validation={hasError} id={id} value={value} onChange={onChange} {...rest} />
+      <InputControl disabled={disabled} data-error-validation={hasError} id={id} value={value} onChange={onChange} {...rest} />
       {hasError && <small>error</small>}
     </label>
   )

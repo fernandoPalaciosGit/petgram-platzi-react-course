@@ -2,11 +2,12 @@ import React, { useContext, useEffect } from 'react'
 import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/InputTextValue'
 import { Container } from '@Components/styles_framework/Container'
 import { Text } from '@Components/styles_framework/Text'
-import { PrimaryButton } from '@Components/styles_framework/Button'
+import { DisabledButton, PrimaryButton } from '@Components/styles_framework/Button'
 import { useRegisterUser } from '@Hooks/useRegisterUser'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { isEmpty } from 'lodash'
 import { useNavigate } from '@reach/router'
+import { MdOutlineCached } from 'react-icons/md'
 
 const RegisterErrors = ({ error }) => {
   const errors = error?.networkError?.result?.errors || error?.graphQLErrors || []
@@ -42,6 +43,7 @@ const RegisterPage = () => {
           id='register-user-control'
           placeholder='Email or user id'
           validationRegex={VALIDATION_CONTROLS.user}
+          disabled={loading}
           control={emailControl}
           type='text'
         />
@@ -49,6 +51,7 @@ const RegisterPage = () => {
           type='password'
           id='register-pass-control'
           validationRegex={VALIDATION_CONTROLS.password}
+          disabled={loading}
           control={passwordControl}
           placeholder='password'
           autoComplete='on'
@@ -58,9 +61,13 @@ const RegisterPage = () => {
           id='register-verification-pass-control'
           validationRegex={VALIDATION_CONTROLS.password}
           placeholder='retry same password'
+          disabled={loading}
           autoComplete='off'
         />
-        <PrimaryButton modifiers={['large']}>Register</PrimaryButton>
+        {loading
+          ? <DisabledButton modifiers={['large']}><MdOutlineCached/></DisabledButton>
+          : <PrimaryButton modifiers={['large']}>Register</PrimaryButton>
+        }
       </form>
       {!isEmpty(error) && <RegisterErrors error={error} />}
     </Container>

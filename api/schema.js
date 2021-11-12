@@ -128,6 +128,10 @@ const resolvers = {
 
       const user = await userModel.find({ email })
 
+      if (!email || !password) {
+        throw new Error('User or password empty');
+      }
+
       if (user) {
         throw new Error('User already exists')
       }

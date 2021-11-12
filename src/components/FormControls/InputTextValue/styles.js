@@ -10,4 +10,8 @@ export const InputControl = styled.input`
   &[data-error-validation="true"] {
     background-color: ${({ theme }) => theme.inputErrorValidate};
   }
+  
+  &[disabled] {
+    background-color: ${({ theme }) => theme.inputDisabled};
+  }
 `

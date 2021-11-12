@@ -43,3 +43,9 @@ export const SecondaryButton = styled(Button)`
   }
   ${applyStyleModifiers(VARIANTS)}
 `
+
+export const DisabledButton = styled(Button)`
+  background-color: ${({ theme }) => theme.disabledColorButton};
+  border: none;
+  ${applyStyleModifiers(VARIANTS)}
+`

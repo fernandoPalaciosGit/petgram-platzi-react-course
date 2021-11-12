@@ -24,11 +24,13 @@ const navBar = {
 const Buttons = {
   smallSIzeButton: fontSize.footer1,
   largeSIzeButton: fontSize.paragraph2,
-  textColorButton: neutral['100']
+  textColorButton: neutral['100'],
+  disabledColorButton: neutral['400']
 }
 
 const form = {
-  inputErrorValidate: red['20']
+  inputErrorValidate: red['20'],
+  inputDisabled: neutral['300']
 }
 
 export const brandLightTheme = {
