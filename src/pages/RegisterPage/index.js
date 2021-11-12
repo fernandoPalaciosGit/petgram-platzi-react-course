@@ -8,12 +8,7 @@ import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { isEmpty } from 'lodash'
 import { useNavigate } from '@reach/router'
 import { MdOutlineCached } from 'react-icons/md'
-
-const RegisterErrors = ({ error }) => {
-  const errors = error?.networkError?.result?.errors || error?.graphQLErrors || []
-
-  return !isEmpty(errors) && errors.map(({ message }, index) => <Text key={index} modifiers={['error']}>{message}</Text>)
-}
+import { RequestErrors } from '@Components/RequestErrors'
 
 const RegisterPage = () => {
   const emailControl = {}
@@ -65,11 +60,10 @@ const RegisterPage = () => {
           autoComplete='off'
         />
         {loading
-          ? <DisabledButton modifiers={['large']}><MdOutlineCached/></DisabledButton>
-          : <PrimaryButton modifiers={['large']}>Register</PrimaryButton>
-        }
+          ? <DisabledButton modifiers={['large']}><MdOutlineCached /></DisabledButton>
+          : <PrimaryButton modifiers={['large']}>Register</PrimaryButton>}
       </form>
-      {!isEmpty(error) && <RegisterErrors error={error} />}
+      {!isEmpty(error) && <RequestErrors error={error} />}
     </Container>
   )
 }
