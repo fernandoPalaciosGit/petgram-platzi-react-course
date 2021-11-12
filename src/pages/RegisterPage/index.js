@@ -2,7 +2,7 @@ import React from 'react'
 import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/InputTextValue'
 import { Container } from '@Components/styles_framework/Container'
 import { Text } from '@Components/styles_framework/Text'
-import { Button } from '@Components/styles_framework/Button'
+import { PrimaryButton } from '@Components/styles_framework/Button'
 
 const RegisterPage = () => {
   const submitRegisterUser = () => {
@@ -12,8 +12,8 @@ const RegisterPage = () => {
   }
 
   return (
-    <Container variant='fluid'>
-      <Text variant='title'>Register as new User</Text>
+    <Container modifiers={['fluidInline']}>
+      <Text modifiers={['title']}>Register as new User</Text>
 
       <form onSubmit={submitRegisterUser}>
         <InputTextValue
@@ -36,7 +36,7 @@ const RegisterPage = () => {
           placeholder='retry same password'
           autoComplete='off'
         />
-        <Button variant='primary' type='submit'>Register</Button>
+        <PrimaryButton modifiers={['large']}>Register</PrimaryButton>
       </form>
     </Container>
   )

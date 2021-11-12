@@ -8,6 +8,6 @@ export const InputControl = styled.input`
   width: 100%;
   
   &[data-error-validation="true"] {
-    background-color: #ffadad;
+    background-color: ${({ theme }) => theme.inputErrorValidate};
   }
 `

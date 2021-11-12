@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
-import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/InputTextValue'
 import { Container } from '@Components/styles_framework/Container'
 import { Text } from '@Components/styles_framework/Text'
-import { Link } from '@reach/router'
-import { Button } from '@Components/styles_framework/Button'
+import { PrimaryButton, SecondaryButton } from '@Components/styles_framework/Button'
+import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/InputTextValue'
+import { Link } from '@Components/Category/styles'
 
 const LoginPage = () => {
   const { activateUser } = useContext(UserLoggedContext)
@@ -14,8 +14,8 @@ const LoginPage = () => {
   }
 
   return (
-    <Container variant='fluid'>
-      <Text variant='subTitle'>Try to log in to access restricted Area</Text>
+    <Container modifiers={['fluidInline']}>
+      <Text modifiers={['title']}>Restricted Area</Text>
       <form onSubmit={submitLoginUser}>
         <InputTextValue
           id='login-user-control'
@@ -30,12 +30,14 @@ const LoginPage = () => {
           placeholder='Email or user id'
           autoComplete='on'
         />
-        <button type='submit'>Sign In</button>
+        <PrimaryButton modifiers={['large']}>Sign In</PrimaryButton>
       </form>
       <div>
-        <span>Do not have account? </span>
+        <Text modifiers={['subTitle']}>Do not have account?</Text>
         <Link to='/register'>
-          <Button variannt='secondary'>Register!</Button>
+          <SecondaryButton modifiers={['small']}>
+            Register!
+          </SecondaryButton>
         </Link>
       </div>
     </Container>

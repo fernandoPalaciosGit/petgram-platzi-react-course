@@ -19,6 +19,7 @@ export const yellow = {
 }
 
 export const red = {
+  20: '#ffadad',
   100: '#d0454c',
   200: '#b54248',
   300: '#95353a'

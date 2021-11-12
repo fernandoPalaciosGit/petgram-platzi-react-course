@@ -1,19 +1,19 @@
 import { fontFamily, fontSize } from './typography'
-import { neutral, red } from './colors'
+import { blue, green, neutral, red } from './colors'
 import { spaces } from '@Components/design/spaces'
 
-export const globalStyles = {
+const globalStyles = {
   rootFontSize: fontSize.root,
   rootFontFamily: fontFamily.primary,
   rootMaxWidth: '500px',
   rootShadow: '0 0 10px rgba(0, 0, 0, 0.05)'
 }
 
-export const body = {
+const body = {
   bodyPaddingX: spaces.xm
 }
 
-export const navBar = {
+const navBar = {
   navBarPaddingX: spaces.m,
   navBarLinkSize: spaces.xl,
   navBarLinkColor: neutral['400'],
@@ -21,18 +21,36 @@ export const navBar = {
   navBarPointerSize: fontSize.cursor
 }
 
+const Buttons = {
+  smallSIzeButton: fontSize.footer1,
+  largeSIzeButton: fontSize.paragraph2,
+  textColorButton: neutral['100']
+}
+
+const form = {
+  inputErrorValidate: red['20']
+}
+
 export const brandLightTheme = {
   ...globalStyles,
   rootColor: neutral['500'],
   rootBackgroundColor: neutral['200'],
+  primaryColor: blue['100'],
+  primaryHoverColor: blue['200'],
+  secondaryColor: green['100'],
+  secondaryHoverColor: green['200'],
+  ...form,
   ...body,
-  ...navBar
+  ...navBar,
+  ...Buttons
 }
 
 export const brandDarkTheme = {
   ...globalStyles,
   rootColor: neutral['400'],
   rootBackgroundColor: neutral['300'],
+  ...form,
   ...body,
-  ...navBar
+  ...navBar,
+  ...Buttons
 }
