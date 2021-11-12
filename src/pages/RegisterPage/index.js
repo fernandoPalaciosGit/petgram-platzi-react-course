@@ -1,15 +1,37 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/InputTextValue'
 import { Container } from '@Components/styles_framework/Container'
 import { Text } from '@Components/styles_framework/Text'
 import { PrimaryButton } from '@Components/styles_framework/Button'
+import { useRegisterUser } from '@Hooks/useRegisterUser'
+import { UserLoggedContext } from '@Providers/UserLoggedProvider'
+import { isEmpty } from 'lodash'
+import { useNavigate } from '@reach/router'
+
+const RegisterErrors = ({ error }) => {
+  const errors = error?.networkError?.result?.errors || error?.graphQLErrors || []
+
+  return !isEmpty(errors) && errors.map(({ message }, index) => <Text key={index} modifiers={['error']}>{message}</Text>)
+}
 
 const RegisterPage = () => {
+  const emailControl = {}
+  const passwordControl = {}
+  const { registerUser, data, loading, error } = useRegisterUser()
+  const { activateUser } = useContext(UserLoggedContext)
+  const navigate = useNavigate()
   const submitRegisterUser = () => {
-    // validate form
-    // mutation signUp
     event.preventDefault()
+    // TODO: validate form
+    registerUser(emailControl.getValue(), passwordControl.getValue())
   }
+
+  useEffect(() => {
+    if (!loading && isEmpty(error) && !isEmpty(data)) {
+      activateUser()
+      navigate('/favourites')
+    }
+  }, [data, loading, error])
 
   return (
     <Container modifiers={['fluidInline']}>
@@ -20,13 +42,15 @@ const RegisterPage = () => {
           id='register-user-control'
           placeholder='Email or user id'
           validationRegex={VALIDATION_CONTROLS.user}
+          control={emailControl}
           type='text'
         />
         <InputTextValue
           type='password'
           id='register-pass-control'
           validationRegex={VALIDATION_CONTROLS.password}
-          placeholder='Email or user id'
+          control={passwordControl}
+          placeholder='password'
           autoComplete='on'
         />
         <InputTextValue
@@ -38,6 +62,7 @@ const RegisterPage = () => {
         />
         <PrimaryButton modifiers={['large']}>Register</PrimaryButton>
       </form>
+      {!isEmpty(error) && <RegisterErrors error={error} />}
     </Container>
   )
 }

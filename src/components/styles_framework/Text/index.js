@@ -9,6 +9,9 @@ const VARIANTS = {
   subTitle: () => `
   font-size: 16px;
   font-weight: 500;
+  `,
+  error: () => `
+    color: red;
   `
 }
 

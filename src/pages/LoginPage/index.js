@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { UserLoggedContext } from '@Providers/UserLoggedProvider'
+import React from 'react'
 import { Container } from '@Components/styles_framework/Container'
 import { Text } from '@Components/styles_framework/Text'
 import { PrimaryButton, SecondaryButton } from '@Components/styles_framework/Button'
@@ -7,10 +6,10 @@ import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/In
 import { Link } from '@Components/Category/styles'
 
 const LoginPage = () => {
-  const { activateUser } = useContext(UserLoggedContext)
   const submitLoginUser = () => {
-    // validate form
-    activateUser()
+    event.preventDefault()
+    // TODO: validate form
+    // TODO: navigate('/favourites'); activateUser()
   }
 
   return (

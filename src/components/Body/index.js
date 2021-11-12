@@ -3,13 +3,14 @@ import { Router } from '@reach/router'
 import { WrapperBody } from '@Components/Body/styles'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { LoadingPage } from '@Components/LoadingPage'
+import RegisterPage from '@Pages/RegisterPage'
 
 const FavouritesPage = lazy(() => import('@Pages/FavouritesPage'))
 const LoginPage = lazy(() => import('@Pages/LoginPage'))
 const UserPage = lazy(() => import('@Pages/UserPage'))
 const PetDetailsPage = lazy(() => import('@Pages/PetDetailsPage'))
 const HomePage = lazy(() => import('@Pages/HomePage'))
-const RegisterPage = lazy(() => import('@Pages/RegisterPage'))
+// const RegisterPage = lazy(() => import('@Pages/RegisterPage'))
 
 const PublicRoutes = () => {
   return (

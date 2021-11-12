@@ -18,8 +18,9 @@ const useInputValue = (initValue, validationRegex) => {
   return { value, onChange, hasError }
 }
 
-export const InputTextValue = ({ id, initValue = '', validationRegex = '', ...rest }) => {
+export const InputTextValue = ({ control = {}, id, initValue = '', validationRegex = '', ...rest }) => {
   const { value, onChange, hasError } = useInputValue(initValue, validationRegex)
+  control.getValue = () => value
 
   return (
     <label htmlFor={id}>
