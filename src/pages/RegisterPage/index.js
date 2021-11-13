@@ -17,8 +17,8 @@ const RegisterPage = () => {
   const { registerUser, data, loading, error } = useRegisterUser()
   const { activateUser } = useContext(UserLoggedContext)
   const navigate = useNavigate()
-  const submitRegisterUser = () =>  {
-    event.preventDefault();
+  const submitRegisterUser = () => {
+    event.preventDefault()
     // TODO: validate form
     registerUser(emailControl.getValue(), passwordControl.getValue())
   }
