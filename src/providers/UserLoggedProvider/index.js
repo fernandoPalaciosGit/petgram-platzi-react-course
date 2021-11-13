@@ -6,7 +6,7 @@ export const UserLoggedContext = createContext({})
 const USER_LOGIN_TOKEN = 'login-platzi-gram'
 
 export const getBearerAuthorization = () => {
-  return hasTokenInBrowserSession() ? `Bearer ${getToken()}` : 'Bearer Unauthorized'
+  return hasTokenInBrowserSession() ? `Bearer ${getToken()}` : ''
 }
 
 export const getToken = () => {
