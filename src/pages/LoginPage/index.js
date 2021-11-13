@@ -24,8 +24,8 @@ const LoginPage = () => {
   }
 
   useEffect(() => {
-    if (!loading && isEmpty(error) && !isEmpty(data)) {
-      activateUser()
+    if (!loading && isEmpty(error) && !isEmpty(data?.login)) {
+      activateUser(data.login)
       navigate('/favourites')
     }
   }, [data, loading, error])

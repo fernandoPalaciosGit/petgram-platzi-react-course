@@ -6,6 +6,7 @@ import { DisabledButton, PrimaryButton } from '@Components/styles_framework/Butt
 import { useRegisterUser } from '@Hooks/useRegisterUser'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { isEmpty } from 'lodash'
+
 import { useNavigate } from '@reach/router'
 import { MdOutlineCached } from 'react-icons/md'
 import { RequestErrors } from '@Components/RequestErrors'
@@ -16,15 +17,15 @@ const RegisterPage = () => {
   const { registerUser, data, loading, error } = useRegisterUser()
   const { activateUser } = useContext(UserLoggedContext)
   const navigate = useNavigate()
-  const submitRegisterUser = () => {
-    event.preventDefault()
+  const submitRegisterUser = () =>  {
+    event.preventDefault();
     // TODO: validate form
     registerUser(emailControl.getValue(), passwordControl.getValue())
   }
 
   useEffect(() => {
-    if (!loading && isEmpty(error) && !isEmpty(data)) {
-      activateUser()
+    if (!loading && isEmpty(error) && !isEmpty(data?.signup)) {
+      activateUser(data.signup)
       navigate('/favourites')
     }
   }, [data, loading, error])

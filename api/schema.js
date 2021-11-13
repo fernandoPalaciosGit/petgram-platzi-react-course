@@ -52,6 +52,7 @@ const typeDefs = gql`
     likePhoto (input: LikePhoto!): Photo
     signup (input: UserCredentials!): String
     login (input: UserCredentials!): String
+    verify (token: String!): String
   }
 `
 
@@ -146,6 +147,13 @@ const resolvers = {
         { id: newUser.id, email: newUser.email },
         process.env.JWT_SECRET,
         { expiresIn: '1y' }
+      )
+    },
+
+    async verify(token) {
+      return jsonwebtoken.sign(
+        token,
+        process.env.JWT_SECRET
       )
     },
 
