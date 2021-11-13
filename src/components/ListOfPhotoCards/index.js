@@ -1,5 +1,5 @@
 import React from 'react'
-import { PhotoCard } from '@Components/PhotoCard'
+import { PhotoCardWithLikes } from '@Components/PhotoCard'
 import { getPhotoCardsWithCategory } from '@GraphQl/GraphQlPhotoCards/getPhotoCardsWithCategory'
 import { WrapperPhotoCards } from '@Components/ListOfPhotoCards/styles'
 
@@ -12,7 +12,7 @@ export const ListOfPhotoCards = ({ categoryId }) => {
 
   return (
     <WrapperPhotoCards>
-      {hasPhotos && data.photos.map((photo) => <PhotoCard key={photo.id} {...photo} />)}
+      {hasPhotos && data.photos.map((photo) => <PhotoCardWithLikes key={photo.id} {...photo} />)}
       {!hasPhotos && <div>Not able to load Photos with {categoryId} category</div>}
     </WrapperPhotoCards>
   )

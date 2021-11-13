@@ -3,8 +3,9 @@ import { Router } from '@reach/router'
 import { WrapperBody } from '@Components/Body/styles'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { LoadingPage } from '@Components/LoadingPage'
+import FavouritesPage from '@Pages/FavouritesPage'
 
-const FavouritesPage = lazy(() => import('@Pages/FavouritesPage'))
+// const FavouritesPage = lazy(() => import('@Pages/FavouritesPage'))
 const LoginPage = lazy(() => import('@Pages/LoginPage'))
 const UserPage = lazy(() => import('@Pages/UserPage'))
 const PetDetailsPage = lazy(() => import('@Pages/PetDetailsPage'))

@@ -1,6 +1,6 @@
 import React from 'react'
 import { getPhotoCardById } from '@GraphQl/GraphQlPhotoCards/getPhotoCardById'
-import { PhotoCard } from '@Components/PhotoCard'
+import { PhotoCardWithLikes } from '@Components/PhotoCard'
 import { WrapperDetailsPage } from '@Pages/PetDetailsPage/styles'
 
 const PetDetailsPage = ({ petId }) => {
@@ -11,7 +11,7 @@ const PetDetailsPage = ({ petId }) => {
 
   return (
     <WrapperDetailsPage>
-      {hasPhoto && <PhotoCard {...data.photo} />}
+      {hasPhoto && <PhotoCardWithLikes {...data.photo} />}
       {!hasPhoto && <div>Not able to load Photo with {petId} ID</div>}
     </WrapperDetailsPage>
   )
