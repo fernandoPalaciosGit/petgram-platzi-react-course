@@ -1,13 +1,11 @@
 import React from 'react'
 import { ListOfCategories } from '@Components/ListOfCategories'
-import { ListOfPhotoCards } from '@Components/ListOfPhotoCards'
 
-const HomePage = ({ categoryId }) => {
+const HomePage = () => {
   return (
     <>
       <ListOfCategories />
-      {categoryId && <ListOfPhotoCards categoryId={categoryId} />}
-      {!categoryId && <div>Landing page: The Animal kingdom</div>}
+      <div>Landing page: The Animal kingdom</div>
     </>
   )
 }

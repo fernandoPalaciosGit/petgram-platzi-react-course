@@ -5,12 +5,24 @@ export const UserLoggedContext = createContext({})
 
 const USER_LOGIN_TOKEN = 'login-platzi-gram'
 
-const hasTokenInBrowserSession = () => {
-  return !isEmpty(window.sessionStorage.getItem(USER_LOGIN_TOKEN))
+export const getBearerAuthorization = () => {
+  return hasTokenInBrowserSession() ? `Bearer ${getToken()}` : 'Bearer Unauthorized'
+}
+
+export const getToken = () => {
+  return window.sessionStorage.getItem(USER_LOGIN_TOKEN)
+}
+
+export const hasTokenInBrowserSession = () => {
+  return !isEmpty(getToken())
 }
 
 const setTokenSession = (token) => {
   if (!isEmpty(token)) window.sessionStorage.setItem(USER_LOGIN_TOKEN, token)
+}
+
+export const removeTokenSession = () => {
+  window.sessionStorage.removeItem(USER_LOGIN_TOKEN)
 }
 
 export const UserLoggedProvider = ({ children }) => {

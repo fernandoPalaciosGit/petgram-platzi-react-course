@@ -8,6 +8,7 @@ const FavouritesPage = lazy(() => import('@Pages/FavouritesPage'))
 const LoginPage = lazy(() => import('@Pages/LoginPage'))
 const UserPage = lazy(() => import('@Pages/UserPage'))
 const PetDetailsPage = lazy(() => import('@Pages/PetDetailsPage'))
+const PetCategoryPage = lazy(() => import('@Pages/PetCategoryPage'))
 const HomePage = lazy(() => import('@Pages/HomePage'))
 const RegisterPage = lazy(() => import('@Pages/RegisterPage'))
 
@@ -15,9 +16,8 @@ const PublicRoutes = () => {
   return (
     <Router>
       <HomePage path='/' />
-      <HomePage path='/pet-category/:categoryId' />
-      <PetDetailsPage path='/pet-details/:petId' />
       <RegisterPage path='/register' />
+      <LoginPage path='/login' />
     </Router>
   )
 }
@@ -25,6 +25,8 @@ const PublicRoutes = () => {
 const ProtectedRoutes = () => {
   return (
     <Router>
+      <PetCategoryPage path='/pet-category/:categoryId' />
+      <PetDetailsPage path='/pet-details/:petId' />
       <FavouritesPage path='/favourites' />
       <UserPage path='/user' />
     </Router>
@@ -34,6 +36,8 @@ const ProtectedRoutes = () => {
 const LoginRoutes = () => {
   return (
     <Router>
+      <LoginPage path='/pet-category/:categoryId' />
+      <LoginPage path='/pet-details/:petId' />
       <LoginPage path='/favourites' />
       <LoginPage path='/user' />
     </Router>
