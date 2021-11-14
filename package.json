@@ -15,7 +15,9 @@
         "prepare": "husky install",
         "lint": "standard",
         "format": "standard --fix",
-        "modules": "webpack --profile --json > stats.json\n"
+        "analyzer:create": "webpack --profile --json > stats.json",
+        "analyzer:run": "webpack-bundle-analyzer stats.json",
+        "analyzer": "npm run analyzer:create && npm run analyzer:run"
     },
     "repository": {
         "type": "git",
