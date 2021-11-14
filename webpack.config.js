@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 
 module.exports = {
   mode: 'development',
@@ -13,6 +14,20 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    // generates manifest.***.json amd inject by meta tag into index.html on npm run start (dist builder process)
+    new WebpackPwaManifest({
+      name: 'Animal social network',
+      short_name: 'Petgram',
+      description: 'share your own pets reference',
+      background_color: '#9bd9eb',
+      theme_color: '#65cbe9',
+      icons: [
+        {
+          src: path.resolve('src/assets/icon.png'), // this plugin autogenerate all these sizes
+          sizes: [96, 128, 192, 256, 384, 512]
+        }
+      ]
     })
   ],
   devtool: 'inline-source-map',
