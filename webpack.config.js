@@ -2,7 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
   devServer: {
     historyApiFallback: true// evita que todas las paginas hagan redirecciones: SPA
   },

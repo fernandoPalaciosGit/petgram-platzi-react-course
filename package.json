@@ -6,9 +6,11 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "vercel-build": "npm run build",
-        "build": "webpack ./src/index.js",
-        "dev:client": "webpack-dev-server",
+        "build": "webpack ./src/index.js --mode='development'",
+        "serve": "npm run build && npx serve dist -s",
         "dev:server": "node ./api",
+        "start": "concurrently --kill-others \"npm run dev:server\" \"npm run serve\"",
+        "dev:client": "webpack-dev-server",
         "dev": "concurrently --kill-others \"npm run dev:server\" \"npm run dev:client\"",
         "prepare": "husky install",
         "lint": "standard",
