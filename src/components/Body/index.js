@@ -1,8 +1,9 @@
 import React, { useContext, Suspense, lazy } from 'react'
-import { Router } from '@reach/router'
+import { Redirect, Router } from '@reach/router'
 import { WrapperBody } from '@Components/Body/styles'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { LoadingPage } from '@Components/LoadingPage'
+import { NotFoundPage } from '@Pages/NotFoundPage'
 
 const FavouritesPage = lazy(() => import('@Pages/FavouritesPage'))
 const LoginPage = lazy(() => import('@Pages/LoginPage'))
@@ -12,19 +13,11 @@ const PetCategoryPage = lazy(() => import('@Pages/PetCategoryPage'))
 const HomePage = lazy(() => import('@Pages/HomePage'))
 const RegisterPage = lazy(() => import('@Pages/RegisterPage'))
 
-const PublicRoutes = () => {
-  return (
-    <Router>
-      <HomePage path='/' />
-      <RegisterPage path='/register' />
-      <LoginPage path='/login' />
-    </Router>
-  )
-}
-
 const ProtectedRoutes = () => {
   return (
     <Router>
+      <NotFoundPage default />
+      <HomePage path='/' />
       <PetCategoryPage path='/pet-category/:categoryId' />
       <PetDetailsPage path='/pet-details/:petId' />
       <FavouritesPage path='/favourites' />
@@ -33,13 +26,17 @@ const ProtectedRoutes = () => {
   )
 }
 
-const LoginRoutes = () => {
+const RedirectRoutesToLogin = () => {
   return (
     <Router>
-      <LoginPage path='/pet-category/:categoryId' />
-      <LoginPage path='/pet-details/:petId' />
-      <LoginPage path='/favourites' />
-      <LoginPage path='/user' />
+      <NotFoundPage default />
+      <HomePage path='/' />
+      <LoginPage path='/login' />
+      <RegisterPage path='/register' />
+      <Redirect from='/pet-category/*' to='/login' noThrow />
+      <Redirect from='/pet-details/*' to='/login' noThrow />
+      <Redirect from='/favourites' to='/login' noThrow />
+      <Redirect from='/user' to='/login' noThrow />
     </Router>
   )
 }
@@ -50,8 +47,7 @@ export const Body = () => {
   return (
     <WrapperBody>
       <Suspense fallback={<LoadingPage />}>
-        <PublicRoutes />
-        {isLogged ? <ProtectedRoutes /> : <LoginRoutes />}
+        {!isLogged ? <RedirectRoutesToLogin /> : <ProtectedRoutes />}
       </Suspense>
     </WrapperBody>
   )
