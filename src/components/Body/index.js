@@ -4,6 +4,7 @@ import { WrapperBody } from '@Components/Body/styles'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { LoadingPage } from '@Components/LoadingPage'
 import { NotFoundPage } from '@Pages/NotFoundPage'
+import { HeaderTitle } from '@Components/HeaderTitle'
 
 const FavouritesPage = lazy(() => import('@Pages/FavouritesPage'))
 const LoginPage = lazy(() => import('@Pages/LoginPage'))
@@ -16,7 +17,6 @@ const RegisterPage = lazy(() => import('@Pages/RegisterPage'))
 const ProtectedRoutes = () => {
   return (
     <Router>
-      test
       <NotFoundPage default />
       <HomePage path='/' />
       <PetCategoryPage path='/pet-category/:categoryId' />
@@ -48,6 +48,7 @@ export const Body = () => {
   return (
     <WrapperBody>
       <Suspense fallback={<LoadingPage />}>
+        <HeaderTitle title='Find animal species' />
         {!isLogged ? <RedirectRoutesToLogin /> : <ProtectedRoutes />}
       </Suspense>
     </WrapperBody>
