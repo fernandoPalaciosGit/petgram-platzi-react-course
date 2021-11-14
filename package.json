@@ -14,7 +14,8 @@
         "dev": "concurrently --kill-others \"npm run dev:server\" \"npm run dev:client\"",
         "prepare": "husky install",
         "lint": "standard",
-        "format": "standard --fix"
+        "format": "standard --fix",
+        "modules": "webpack --profile --json > stats.json\n"
     },
     "repository": {
         "type": "git",
@@ -43,6 +44,7 @@
         "prettier": "^2.4.1",
         "standard": "^16.0.4",
         "webpack": "^5.59.1",
+        "webpack-bundle-analyzer": "^4.5.0",
         "webpack-cli": "^4.9.1",
         "webpack-dev-server": "^4.3.1"
     },
@@ -55,6 +57,7 @@
         "intersection-observer": "^0.12.0",
         "lodash": "^4.17.21",
         "polished": "^4.1.3",
+        "prop-types": "^15.7.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-helmet": "^6.1.0",

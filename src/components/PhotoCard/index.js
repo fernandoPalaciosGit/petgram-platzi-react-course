@@ -3,8 +3,7 @@ import { CardWrapper, ImageWrapper, Likes } from './styles'
 import { useViewportVisible } from '@Hooks/useViewportVisible'
 import { updateUserLike } from '@GraphQl/GraphQlLikes/updateUserLike'
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
-
-const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1520561805070-83c413349512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+import { PhotoCardPropTypes, PhotoCardWithLikesPropTypes } from '@Components/PhotoCard/propTypes'
 
 export const PhotoCardWithLikes = (props) => {
   const { liked, likes, id } = props
@@ -24,7 +23,9 @@ export const PhotoCardWithLikes = (props) => {
   )
 }
 
-export const PhotoCard = ({ id, src = DEFAULT_IMAGE, children }) => {
+PhotoCardWithLikes.propTypes = PhotoCardWithLikesPropTypes
+
+export const PhotoCard = ({ id, src, children }) => {
   const card = useRef(null)
   const [showCard] = useViewportVisible(card, { root: '.ListOfPhotoCards' })
 
@@ -41,3 +42,5 @@ export const PhotoCard = ({ id, src = DEFAULT_IMAGE, children }) => {
     </CardWrapper>
   )
 }
+
+PhotoCard.propTypes = PhotoCardPropTypes

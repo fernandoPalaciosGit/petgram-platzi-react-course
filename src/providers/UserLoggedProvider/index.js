@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-import { isEmpty } from 'lodash'
+import IsEmpty from 'lodash/isEmpty'
 
 export const UserLoggedContext = createContext({})
 
@@ -14,11 +14,11 @@ const getToken = () => {
 }
 
 const hasTokenInBrowserSession = () => {
-  return !isEmpty(getToken())
+  return !IsEmpty(getToken())
 }
 
 const setTokenSession = (token) => {
-  if (!isEmpty(token)) window.sessionStorage.setItem(USER_LOGIN_TOKEN, token)
+  if (!IsEmpty(token)) window.sessionStorage.setItem(USER_LOGIN_TOKEN, token)
 }
 
 const removeTokenSession = () => {

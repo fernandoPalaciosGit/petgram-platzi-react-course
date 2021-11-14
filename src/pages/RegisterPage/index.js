@@ -5,7 +5,7 @@ import { Text } from '@Components/styles_framework/Text'
 import { DisabledButton, PrimaryButton } from '@Components/styles_framework/Button'
 import { useRegisterUser } from '@Hooks/useRegisterUser'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
-import { isEmpty } from 'lodash'
+import IsEmpty from 'lodash/isEmpty'
 
 import { useNavigate } from '@reach/router'
 import { MdOutlineCached } from 'react-icons/md'
@@ -24,7 +24,7 @@ const RegisterPage = () => {
   }
 
   useEffect(() => {
-    if (!loading && isEmpty(error) && !isEmpty(data?.signup)) {
+    if (!loading && IsEmpty(error) && !IsEmpty(data?.signup)) {
       activateUser(data.signup)
       navigate('/favourites')
     }
@@ -64,7 +64,7 @@ const RegisterPage = () => {
           ? <DisabledButton modifiers={['large']}><MdOutlineCached /></DisabledButton>
           : <PrimaryButton modifiers={['large']}>Register</PrimaryButton>}
       </form>
-      {!isEmpty(error) && <RequestErrors error={error} />}
+      {!IsEmpty(error) && <RequestErrors error={error} />}
     </Container>
   )
 }

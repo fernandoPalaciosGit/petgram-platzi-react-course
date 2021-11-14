@@ -5,7 +5,7 @@ import { DisabledButton, PrimaryButton, SecondaryButton } from '@Components/styl
 import { InputTextValue, VALIDATION_CONTROLS } from '@Components/FormControls/InputTextValue'
 import { Link } from '@Components/Category/styles'
 import { useLoginUser } from '@Hooks/useLoginUser'
-import { isEmpty } from 'lodash'
+import IsEmpty from 'lodash/isEmpty'
 import { RequestErrors } from '@Components/RequestErrors'
 import { UserLoggedContext } from '@Providers/UserLoggedProvider'
 import { useNavigate } from '@reach/router'
@@ -24,7 +24,7 @@ const LoginPage = () => {
   }
 
   useEffect(() => {
-    if (!loading && isEmpty(error) && !isEmpty(data?.login)) {
+    if (!loading && IsEmpty(error) && !IsEmpty(data?.login)) {
       activateUser(data.login)
       navigate('/favourites')
     }
@@ -55,7 +55,7 @@ const LoginPage = () => {
           ? <DisabledButton modifiers={['large']}><MdOutlineCached /></DisabledButton>
           : <PrimaryButton modifiers={['large']}>Sign In</PrimaryButton>}
       </form>
-      {!isEmpty(error) && <RequestErrors error={error} />}
+      {!IsEmpty(error) && <RequestErrors error={error} />}
 
       <div>
         <Text modifiers={['subTitle']}>Do not have account?</Text>
