@@ -16,6 +16,7 @@ const RegisterPage = lazy(() => import('@Pages/RegisterPage'))
 const ProtectedRoutes = () => {
   return (
     <Router>
+      test
       <NotFoundPage default />
       <HomePage path='/' />
       <PetCategoryPage path='/pet-category/:categoryId' />
